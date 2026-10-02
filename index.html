@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ready2eat — Frozen Food</title>
+<link rel="icon" href="/logo.png">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#home"><img src="/logo.png" alt="Ready2eat logo"><span>Ready<span>2</span>eat</span></a>
+    <nav>
+      <a href="#home">Home</a><a href="#shop">Shop</a><a href="#how">How It Works</a>
+      <button class="cart-btn" id="openCart">Cart <b id="cartCount">0</b></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-inner">
+    <div>
+      <p class="eyebrow">FRESHLY FROZEN • SAFE • FAST DELIVERY</p>
+      <h1>Good Food,<br><span>Anytime.</span></h1>
+      <p class="hero-copy">Your easy online store for delicious frozen food. Pick your packet size, choose quantity, add to cart and order from home.</p>
+      <a class="primary" href="#shop">Shop Frozen Food →</a>
+    </div>
+    <div class="hero-card">
+      <img src="/logo.png" alt="Ready2eat">
+      <div><strong>Flexible packet sizes</strong><small>250g • 500g • 1kg and more</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="shop" class="section">
+  <div class="container">
+    <div class="section-head"><div><p class="eyebrow">READY TO COOK</p><h2>Frozen Food Collection</h2></div><div class="filters" id="filters"></div></div>
+    <div id="products" class="product-grid"><div class="loading">Loading products…</div></div>
+  </div>
+</section>
+
+<section id="how" class="section muted">
+ <div class="container">
+  <div class="section-head"><div><p class="eyebrow">SIMPLE PROCESS</p><h2>How It Works</h2></div></div>
+  <div class="steps">
+    <div><span>01</span><h3>Choose your food</h3><p>Select your favorite frozen item and packet size.</p></div>
+    <div><span>02</span><h3>Add to cart</h3><p>Pick the quantity you want and review your total.</p></div>
+    <div><span>03</span><h3>Enter address</h3><p>Give your full delivery address and phone number.</p></div>
+    <div><span>04</span><h3>Pay & receive</h3><p>Use COD, bKash or Nagad and get your order delivered.</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="container footer"><div><div class="brand"><img src="/logo.png"><span>Ready<span>2</span>eat</span></div><p>Good Food, Anytime.</p></div><div><h4>Contact</h4><a id="waLink" target="_blank">WhatsApp: <span id="waNumber"></span></a></div><div><h4>Payment</h4><p>bKash • Nagad • Cash on Delivery</p></div></div></footer>
+
+<aside class="drawer" id="cartDrawer">
+ <div class="drawer-head"><h2>Your Cart</h2><button class="icon-btn" id="closeCart">×</button></div>
+ <div id="cartItems" class="cart-items"></div>
+ <div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">৳0</strong></div><div><span>Delivery</span><strong id="cartDelivery">৳0</strong></div><div class="total"><span>Total</span><strong id="cartTotal">৳0</strong></div><button class="primary full" id="checkoutBtn">Proceed to Checkout</button></div>
+</aside>
+<div class="backdrop" id="backdrop"></div>
+
+<div class="modal" id="checkoutModal">
+ <div class="modal-card checkout-card">
+  <button class="icon-btn close-modal" data-close="checkoutModal">×</button>
+  <p class="eyebrow">SECURE CHECKOUT</p><h2>Complete Your Order</h2>
+  <form id="checkoutForm">
+   <div class="form-grid">
+    <label>Full Name<input name="customer_name" required placeholder="Your full name"></label>
+    <label>Phone Number<input name="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></label>
+    <label>WhatsApp Number<input name="whatsapp" inputmode="tel" placeholder="Optional"></label>
+<label>Division<select name="division" required><option value="">Select Division</option><option>Dhaka</option><option>Chattogram</option><option>Rajshahi</option><option>Khulna</option><option>Barishal</option><option>Sylhet</option><option>Rangpur</option><option>Mymensingh</option></select></label>
+    <label>District<input name="district" required placeholder="e.g. Dhaka"></label>
+    <label>Upazila / Thana<input name="upazila" required placeholder="e.g. Mirpur"></label>
+    <label>Area / Locality<input name="area" placeholder="e.g. Mirpur-10"></label>
+    <label>City / Municipality<input name="city" value="Dhaka" required></label>
+    <label>Postal Code<input name="postal_code" required placeholder="e.g. 1216"></label>
+    <label class="full-field">House / Flat / Road / Block / Full Address<textarea name="address" required placeholder="House/Flat, Road, Block, Lane, Landmark, etc."></textarea></label>
+   </div>
+   <div class="payment-box"><h3>Payment Method</h3>
+    <label class="pay-option"><input type="radio" name="payment_method" value="cod" checked><span><b>Cash on Delivery</b><small>Pay when you receive the order.</small></span></label>
+    <label class="pay-option"><input type="radio" name="payment_method" value="bkash"><span><b>bKash</b><small>Send payment to <strong id="bkashNumber"></strong> and enter Transaction ID below.</small></span></label>
+    <label class="pay-option"><input type="radio" name="payment_method" value="nagad"><span><b>Nagad</b><small>Send payment to <strong id="nagadNumber"></strong> and enter Transaction ID below.</small></span></label>
+    <div id="onlinePaymentFields" class="form-grid hidden"><label>Payment Number Used<input name="payment_number" placeholder="Your bKash/Nagad number"></label><label>Transaction ID<input name="transaction_id" placeholder="e.g. 8ABC123XYZ"></label></div>
+   </div>
+   <label>Order Note<textarea name="notes" placeholder="Optional delivery instructions"></textarea></label>
+   <div class="checkout-total"><span>Order Total</span><strong id="checkoutTotal">৳0</strong></div>
+   <button class="primary full" type="submit">Place Order</button>
+   <p class="form-message" id="checkoutMessage"></p>
+  </form>
+ </div>
+</div>
+
+<div class="modal" id="successModal">
+ <div class="modal-card success-card"><div class="success-icon">✓</div><p class="eyebrow">ORDER RECEIVED</p><h2>Thank you for ordering!</h2><p>Your order number is <strong id="orderNumber"></strong>. Our team will contact you for confirmation.</p><a class="primary" id="successWhatsapp" target="_blank">Contact on WhatsApp</a><button class="secondary" data-close="successModal">Continue Shopping</button></div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
